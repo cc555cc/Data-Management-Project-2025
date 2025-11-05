@@ -10,7 +10,7 @@ values
 (1005, 'Ethan Zhang', 'ethan@student.edu', 'hash5');
 
 -- add courses
-insert into course (course_id, course_name)
+insert into course (course_id,course_name)
 values
 (2001, 'Software Engineering'),
 (2002, 'Database Systems'),
@@ -121,5 +121,13 @@ values
 (12003, 9002, 'quiz'),
 (12004, 9003, 'assignment'),
 (12005, 9004, 'study');
+
+-- additional entries for view testing
+insert into course_work (cw_id, user_id, course_id, cw_title, cw_type, description, due_date, grade) 
+values
+(6006, 1001, 2001, 'Software Design Project', 'project', 'Develop a mini software application demonstrating design patterns.', '2025-11-25 23:59:00', 93),
+(6007, 1001, 2001, 'Software Requirements Report', 'assignment', 'Write a detailed requirements document for a small system.', '2025-11-22 23:59:00', 90),
+(6008, 1001, 2002, 'SQL Optimization Quiz', 'quiz', 'Quiz on query optimization and indexing techniques.', '2025-11-18 10:00:00', 88),
+(6009, 1001, 2002, 'ER Diagram Lab', 'assignment', 'Design and document an ER diagram for an online store database.', '2025-11-20 23:59:00', 94);
 
 
