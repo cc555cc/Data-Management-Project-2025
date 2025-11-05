@@ -193,9 +193,15 @@ CREATE TABLE IF NOT EXISTS `datamanagementproject`.`quiz` (
   PRIMARY KEY (`quiz_id`),
   UNIQUE INDEX `quiz_id_UNIQUE` (`quiz_id` ASC) VISIBLE,
   INDEX `user_id_idx` (`user_id` ASC) VISIBLE,
-  CONSTRAINT `user_id`
+  INDEX `quiz_course_id_idx` (`course_id` ASC) VISIBLE,
+  CONSTRAINT `quiz_user_id`
     FOREIGN KEY (`user_id`)
-    REFERENCES `datamanagementproject`.`user` (`user_id`))
+    REFERENCES `datamanagementproject`.`user` (`user_id`),
+  CONSTRAINT `quiz_course_id`
+    FOREIGN KEY (`course_id`)
+    REFERENCES `datamanagementproject`.`course` (`course_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
@@ -285,16 +291,12 @@ CREATE TABLE IF NOT EXISTS `datamanagementproject`.`summary` (
   UNIQUE INDEX `sum_id_UNIQUE` (`sum_id` ASC) VISIBLE,
   INDEX `summary_user_id_idx` (`user_id` ASC) VISIBLE,
   INDEX `summary_course_id_idx` (`course_id` ASC) VISIBLE,
-  CONSTRAINT `summary_user_id`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `datamanagementproject`.`user` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `summary_course_id`
     FOREIGN KEY (`course_id`)
-    REFERENCES `datamanagementproject`.`course` (`course_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `datamanagementproject`.`course` (`course_id`),
+  CONSTRAINT `summary_user_id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `datamanagementproject`.`user` (`user_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
