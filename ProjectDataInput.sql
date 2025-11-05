@@ -1,202 +1,199 @@
-use DataManagementProject;
+use datamanagementproject;
 
 -- add users
-insert into User (user_id, first_name, mid_name, last_name, email, role, pwd_hash)
+insert into User (user_id, name, email, pwd_hash) 
 values
-(1001,'Alice','M','Tan','alice.tan@student.edu','Student','hash123'),
-(1002,'Ben','R','Lee','ben.lee@student.edu','Student','hash123'),
-(1003,'Cindy','T','Wong','cindy.wong@student.edu','Student','hash123'),
-(1004,'Daniel','J','Kim','daniel.kim@student.edu','Student','hash123'),
-(1005,'Ella','L','Ng','ella.ng@student.edu','Student','hash123'),
-(1006,'Frank','K','Zhao','frank.zhao@student.edu','Student','hash123'),
-(1007,'Grace','A','Chow','grace.chow@student.edu','Student','hash123'),
-(1008,'Henry','S','Lo','henry.lo@student.edu','Student','hash123'),
-(1009,'Ivy','C','Park','ivy.park@student.edu','Student','hash123'),
-(1010,'Jake','H','Lin','jake.lin@student.edu','Student','hash123'),
-(2001,'Aaron','J','Wong','aaron.wong@staff.edu','TA','hash123'),
-(2002,'Bella','T','Chan','bella.chan@staff.edu','TA','hash123'),
-(2003,'Calvin','L','Ng','calvin.ng@staff.edu','TA','hash123'),
-(2004,'Doris','R','Ho','doris.ho@staff.edu','TA','hash123'),
-(2005,'Evan','S','Yip','evan.yip@staff.edu','TA','hash123'),
-(3001,'Peter','V','Chan','peter.chan@faculty.edu','Lecturer','hash123'),
-(3002,'Rita','X','Ho','rita.ho@faculty.edu','Lecturer','hash123'),
-(3003,'Sam','Y','Chiu','sam.chiu@faculty.edu','Lecturer','hash123'),
-(3004,'Tina','Z','Fung','tina.fung@faculty.edu','Lecturer','hash123'),
-(3005,'Victor','B','Wu','victor.wu@faculty.edu','Lecturer','hash123');
+(1, 'Carson Chan', 'carson@student.edu', 'hash1'),
+(2, 'Emily Wong', 'emily@student.edu', 'hash2'),
+(3, 'Jason Lee', 'jason@student.edu', 'hash3'),
+(4, 'Sophia Nguyen', 'sophia@student.edu', 'hash4'),
+(5, 'Ethan Zhang', 'ethan@student.edu', 'hash5'),
+(6, 'Olivia Brown', 'olivia@student.edu', 'hash6'),
+(7, 'Liam Davis', 'liam@student.edu', 'hash7'),
+(8, 'Ava Patel', 'ava@student.edu', 'hash8'),
+(9, 'Noah Garcia', 'noah@student.edu', 'hash9'),
+(10, 'Mia Johnson', 'mia@student.edu', 'hash10');
 
 -- add courses
-insert into Course (course_id, course_name) 
+insert into Course (course_id, course_name)
 values
-(4001,'Software Engineering Principles'),
-(4002,'Database Management Systems'),
-(4003,'Web Application Development'),
-(4004,'Artificial Intelligence'),
-(4005,'Computer Networks');
+(1, 'Software Engineering'),
+(2, 'Database Systems'),
+(3, 'Operating Systems'),
+(4, 'Data Structures'),
+(5, 'Web Development'),
+(6, 'Computer Networks'),
+(7, 'Artificial Intelligence'),
+(8, 'Machine Learning'),
+(9, 'Discrete Math'),
+(10, 'Cybersecurity'),
+(11, 'Cloud Computing'),
+(12, 'Human Computer Interaction'),
+(13, 'Mobile App Dev'),
+(14, 'System Design'),
+(15, 'Data Science');
 
--- add sections
-insert into Section (section_id, course_id, instructor_id) 
+-- add ai summary
+insert into Summary (sum_id, user_id, course_id, date_created, file_url)
 values
-(5001,4001,3001),
-(5002,4001,3001),
-(5003,4002,3002),
-(5004,4002,3002),
-(5005,4003,3003),
-(5006,4003,3003),
-(5007,4003,3003),
-(5008,4004,3004),
-(5009,4005,3005),
-(5010,4005,3005);
+(1, 1, 2, '2025-10-10 10:00:00', 'summary1.pdf'),
+(2, 1, 4, '2025-10-12 11:30:00', 'summary2.pdf'),
+(3, 2, 1, '2025-10-14 09:00:00', 'summary3.pdf'),
+(4, 3, 7, '2025-10-16 13:15:00', 'summary4.pdf'),
+(5, 3, 8, '2025-10-18 16:00:00', 'summary5.pdf'),
+(6, 4, 5, '2025-10-20 14:30:00', 'summary6.pdf'),
+(7, 5, 6, '2025-10-22 08:45:00', 'summary7.pdf'),
+(8, 7, 3, '2025-10-24 15:10:00', 'summary8.pdf'),
+(9, 8, 10, '2025-10-26 17:20:00', 'summary9.pdf'),
+(10, 10, 12, '2025-10-28 19:00:00', 'summary10.pdf');
 
--- add quizes
-insert into Quiz (quiz_id, section_id, start_time, due_time) 
+-- add quizzes
+insert into Quiz (quiz_id, user_id, course_id, time_spent, date)
 values
-(6001,5001,'09:00:00','09:30:00'),
-(6002,5003,'10:00:00','10:40:00'),
-(6003,5005,'13:00:00','13:45:00'),
-(6004,5008,'14:00:00','14:50:00'),
-(6005,5009,'15:00:00','15:40:00');
+(1, 1, 2, '00:25:00', '2025-10-11 09:00:00'),
+(2, 1, 4, '00:18:00', '2025-10-13 10:00:00'),
+(3, 2, 3, '00:30:00', '2025-10-15 14:00:00'),
+(4, 3, 1, '00:22:00', '2025-10-17 09:30:00'),
+(5, 3, 7, '00:27:00', '2025-10-19 10:30:00'),
+(6, 4, 5, '00:20:00', '2025-10-21 15:00:00'),
+(7, 6, 6, '00:35:00', '2025-10-23 11:00:00'),
+(8, 8, 9, '00:21:00', '2025-10-25 13:00:00'),
+(9, 9, 10, '00:28:00', '2025-10-27 16:00:00'),
+(10, 10, 12, '00:24:00', '2025-10-29 09:00:00');
 
 -- add quiz question
-insert into Quiz_Question (question_id, quiz_id, context, full_mark, correct_answer) 
+insert into Quiz_Question (question_id, quiz_id, question, user_answer, correct_answer, full_mark, grade) 
 values
-(7001,6001,'What is software architecture?','It defines the structure and interaction of software components in a system.',2),
-(7002,6001,'Explain the Model-View-Controller (MVC) pattern.','MVC separates data (Model), interface (View), and control logic (Controller) to improve modularity.',3),
-(7003,6002,'What is database normalization?','A process to organize data and reduce redundancy by dividing tables logically.',2),
-(7004,6002,'What is a foreign key?','A field that establishes a relationship between two tables by referencing a primary key.',2),
-(7005,6003,'What is REST API?','A web architecture style that uses HTTP methods for data operations like GET, POST, PUT, DELETE.',3),
-(7006,6003,'What are CRUD operations?','Create, Read, Update, Delete — the four basic database operations used in applications.',2),
-(7007,6004,'What is supervised learning?','A machine learning technique where models learn from labeled training data.',3),
-(7008,6004,'What is overfitting in AI?','When a model performs well on training data but poorly on unseen data.',2),
-(7009,6005,'What is TCP/IP?','A protocol suite that defines how data is transmitted across networks.',3),
-(7010,6005,'What is DNS and why is it important?','Domain Name System converts human-readable domain names into IP addresses.',2);
+(1,1,'What is SQL?','Structured Query Language','Structured Query Language',5,5),
+(2,1,'What is a table?','Data structure','Data structure',5,5),
+(3,1,'What is a schema?','Database structure','Database structure',5,4),
 
--- add quiz submissions
-insert into Quiz_Submission (q_submission_id, quiz_id, student_id, grade, status) 
-values
-(8001,6001,1001,9,'submitted'),
-(8002,6001,1002,8,'submitted'),
-(8003,6002,1003,9,'submitted'),
-(8004,6003,1004,7,'submitted'),
-(8005,6003,1005,8,'submitted'),
-(8006,6004,1006,9,'submitted'),
-(8007,6005,1007,10,'submitted'),
-(8008,6005,1008,8,'submitted'),
-(8009,6001,1009,7,'submitted'),
-(8010,6002,1010,8,'submitted'),
-(8011,6003,1001,9,'submitted'),
-(8012,6004,1002,8,'submitted'),
-(8013,6005,1003,9,'submitted'),
-(8014,6004,1004,10,'submitted'),
-(8015,6001,1005,9,'submitted');
+(4,2,'Define stack.','LIFO structure','LIFO structure',5,5),
+(5,2,'What is queue?','FIFO structure','FIFO structure',5,5),
+(6,2,'Define linked list.','Nodes with pointers','Nodes with pointers',5,4),
 
--- add question submission
-insert into Question_Submission (submission_id, question_id, answer, grade)
-values
-(8001,7001,'Architecture defines system structure.',2),
-(8001,7002,'MVC: Model-View-Controller.',3),
-(8003,7003,'Normalization removes redundancy.',2),
-(8003,7004,'Foreign key links tables.',3),
-(8004,7005,'REST API uses HTTP requests.',2),
-(8004,7006,'GET, POST, PUT, DELETE.',3),
-(8006,7007,'Supervised uses labeled data.',3),
-(8006,7008,'Overfitting = memorizing data.',2),
-(8007,7009,'TCP/IP is the internet protocol suite.',3),
-(8007,7010,'Latency is delay in data transfer.',2);
+(7,3,'What is process?','Running program','Running program',5,5),
+(8,3,'What is thread?','Lightweight process','Lightweight process',5,5),
+(9,3,'Define deadlock.','Waiting forever','Waiting forever',5,4),
 
--- make announcement
-insert into Announcement (announcement_id, author_id, recipient, publish_time, title, content)
-values
-(9001,3001,'All Students','09:00:00','Welcome','Welcome to Software Engineering!'),
-(9002,3002,'Database Students','10:00:00','Quiz Reminder','Quiz on normalization this Friday.'),
-(9003,3003,'Web Dev Students','11:00:00','Assignment Due','CRUD project due soon.'),
-(9004,3004,'AI Students','12:00:00','Lab Update','New dataset for neural net lab.'),
-(9005,3005,'Network Students','13:00:00','Exam','Midterm exam next week.');
+(10,4,'What is AI?','Machine intelligence','Machine intelligence',5,5),
+(11,4,'What is ML?','Learning from data','Learning from data',5,4),
+(12,4,'Define dataset.','Collection of data','Collection of data',5,5),
 
--- add teach relationsip
-insert into Teach (staff_id, section_id, course_id) 
-values
-(2001,5001,4001),
-(2002,5002,4001),
-(2003,5003,4002),
-(2004,5004,4002),
-(2005,5005,4003),
-(3001,5001,4001),
-(3001,5002,4001),
-(3002,5003,4002),
-(3002,5004,4002),
-(3003,5005,4003),
-(3003,5006,4003),
-(3003,5007,4003),
-(3004,5008,4004),
-(3005,5009,4005),
-(3005,5010,4005);
+(13,5,'What is function?','Reusable code','Reusable code',5,5),
+(14,5,'What is loop?','Repetition structure','Repetition structure',5,5),
+(15,5,'Define recursion.','Function calling itself','Function calling itself',5,4),
 
--- -add study section
-insert into Study_Section (section_id, student_id, start_time, end_time, topic, ai_summary)
-values
-(5001,1001,'18:00:00','19:00:00','Software Design','Reviewed architecture patterns.'),
-(5003,1002,'20:00:00','21:00:00','Database Normalization','Reviewed normalization and keys.');
+(16,6,'Define HTTP.','Protocol','Protocol',5,5),
+(17,6,'Define API.','Application interface','Application interface',5,5),
+(18,6,'Define JSON.','Data format','Data format',5,4),
 
--- add student notes
-insert into Student_Notes (note_id, student_id, section_id, title, content, create_date, last_update)
-values
-(10001,1001,5001,'Week 1 Notes','Intro to software engineering.','2025-09-05','2025-09-06'),
-(10002,1002,5003,'Normalization','Discussed 1NF–3NF.','2025-09-06','2025-09-07'),
-(10003,1003,5005,'HTTP Basics','GET and POST explained.','2025-09-07','2025-09-07'),
-(10004,1004,5008,'AI Overview','Neural networks basics.','2025-09-08','2025-09-08'),
-(10005,1005,5009,'Networking','TCP/IP model summary.','2025-09-09','2025-09-09'),
-(10006,1006,5001,'Software Req.','Use-case diagrams learned.','2025-09-10','2025-09-10'),
-(10007,1007,5003,'SQL Basics','SELECT, JOIN examples.','2025-09-11','2025-09-11'),
-(10008,1008,5005,'Express.js','Routing practice.','2025-09-12','2025-09-12'),
-(10009,1009,5008,'Machine Learning','Supervised vs unsupervised.','2025-09-13','2025-09-13'),
-(10010,1010,5009,'Routers','Routing algorithms.','2025-09-14','2025-09-14');
+(19,7,'Define IP.','Internet Protocol','Internet Protocol',5,5),
+(20,7,'Define DNS.','Domain Name System','Domain Name System',5,5),
+(21,7,'Define TCP.','Transmission Control Protocol','Transmission Control Protocol',5,4),
 
--- add enroll relationship
-INSERT INTO Enrolls_in (student_id, section_id) VALUES
-(1001,5001),
-(1002,5001),
-(1003,5003),
-(1004,5003),
-(1005,5005),
-(1006,5006),
-(1007,5008),
-(1008,5008),
-(1009,5009),
-(1010,5009);
+(22,8,'Define variable.','Container for value','Container for value',5,5),
+(23,8,'Define constant.','Fixed value','Fixed value',5,5),
+(24,8,'Define array.','List structure','List structure',5,4),
 
--- add calendar event
-insert into Calendar_Event (event_id, user_id, event_name, start_date, end_date, description)
-values
-(11001,1001,'Quiz 1','2025-09-10','2025-09-10','Software Architecture Quiz'),
-(11002,1002,'Study Session','2025-09-11','2025-09-11','Database review'),
-(11003,1003,'Assignment 1 Due','2025-09-15','2025-09-15','Submit via portal'),
-(11004,1004,'Project Meeting','2025-09-16','2025-09-16','Discuss AI proposal'),
-(11005,1005,'Networking Lecture','2025-09-18','2025-09-18','TCP/IP overview'),
-(11006,1006,'Midterm','2025-09-20','2025-09-20','Course midterm exam'),
-(11007,1007,'Office Hours','2025-09-21','2025-09-21','TA help session'),
-(11008,1008,'Presentation','2025-09-23','2025-09-23','Web dev presentation'),
-(11009,1009,'Lab Work','2025-09-25','2025-09-25','Complete SQL lab'),
-(11010,1010,'Final Review','2025-09-27','2025-09-27','Review before final');
+(25,9,'Define cybersecurity.','Protection from attacks','Protection from attacks',5,5),
+(26,9,'Define malware.','Malicious software','Malicious software',5,5),
+(27,9,'Define firewall.','Network protection','Network protection',5,5),
+
+(28,10,'Define HCI.','Human Computer Interaction','Human Computer Interaction',5,5),
+(29,10,'Define usability.','Ease of use','Ease of use',5,4),
+(30,10,'Define interface.','User interaction point','User interaction point',5,5);
 
 -- add assignment
-insert into Assignment (assignment_id, section_id, assignment_title, description, due_date, available_date)
+insert into assignment (assignment_id, user_id, course_id, assignment_title, description, due_date, grade) 
 values
-(12001,5001,'Software Design Doc','Submit architecture diagram.','2025-09-20','2025-09-10'),
-(12002,5003,'SQL Project','Create normalized schema.','2025-09-21','2025-09-11'),
-(12003,5005,'Web App','Develop CRUD app.','2025-09-22','2025-09-12'),
-(12004,5008,'AI Model','Train a neural network.','2025-09-23','2025-09-13'),
-(12005,5009,'Network Config','Subnetting plan.','2025-09-24','2025-09-14');
+(1, 1, 1, 'Database Project', 'Design ER diagram', '2025-11-05 23:59:00', 90),
+(2, 2, 3, 'OS Lab', 'Thread synchronization', '2025-11-06 23:59:00', 80),
+(3, 3, 5, 'Web App', 'React frontend', '2025-11-07 23:59:00', 85),
+(4, 4, 7, 'AI Essay', 'Discuss AI ethics', '2025-11-08 23:59:00', 92),
+(5, 5, 6, 'Networking Task', 'Packet analysis', '2025-11-09 23:59:00', 88),
+(6, 6, 10, 'Security Review', 'Firewall setup', '2025-11-10 23:59:00', 91),
+(7, 8, 12, 'HCI Design', 'UI prototype', '2025-11-11 23:59:00', 84),
+(8, 10, 15, 'Data Science Report', 'Analyze dataset', '2025-11-12 23:59:00', 95);
 
--- add assignment submission
-insert into Assignment_Submission (assignment_id, student_id, submission_time, status, grade)
+-- add study section
+insert into study_section (section_id, user_id, start_time, end_time)
 values
-(12001,1001,'12:00:00','submitted',9),
-(12001,1002,'12:10:00','submitted',8),
-(12002,1003,'12:20:00','submitted',9),
-(12002,1004,'12:25:00','submitted',7),
-(12003,1005,'12:30:00','submitted',8),
-(12003,1006,'12:35:00','submitted',9),
-(12004,1007,'12:40:00','submitted',10),
-(12004,1008,'12:45:00','submitted',9),
-(12005,1009,'12:50:00','submitted',9),
-(12005,1010,'12:55:00','submitted',8);
+(2,2,'2025-10-31 10:00:00','2025-10-31 11:30:00'),
+(3,3,'2025-10-31 14:00:00','2025-10-31 16:00:00'),
+(4,4,'2025-11-01 13:00:00','2025-11-01 15:00:00'),
+(5,5,'2025-11-02 09:30:00','2025-11-02 10:30:00'),
+(6,6,'2025-11-02 14:00:00','2025-11-02 15:00:00'),
+(7,7,'2025-11-03 10:00:00','2025-11-03 12:00:00'),
+(8,8,'2025-11-03 13:00:00','2025-11-03 15:00:00'),
+(9,9,'2025-11-04 15:00:00','2025-11-04 17:00:00'),
+(10,10,'2025-11-04 09:00:00','2025-11-04 10:30:00'),
+(11,1,'2025-11-05 10:00:00','2025-11-05 11:00:00'),
+(12,5,'2025-11-05 14:00:00','2025-11-05 15:00:00');
+
+-- add notes
+insert into student_notes (note_id, user_id, course_id, title, content, created_date, last_update) 
+values
+(1,1,1,'Intro to DB','Database basics','2025-10-25 09:00:00','2025-10-26 10:00:00'),
+(2,1,2,'SQL Joins','Inner/Outer Join examples','2025-10-26 13:00:00','2025-10-27 14:00:00'),
+(3,2,3,'Process Mgmt','CPU scheduling','2025-10-27 09:00:00','2025-10-27 10:00:00'),
+(4,3,5,'HTML Basics','Tags and structure','2025-10-28 15:00:00','2025-10-28 16:00:00'),
+(5,3,7,'AI Overview','What is AI?','2025-10-29 09:00:00','2025-10-30 09:00:00'),
+(6,4,10,'Cybersecurity','Network protection','2025-10-30 14:00:00','2025-10-31 15:00:00'),
+(7,5,12,'UI Principles','Design heuristics','2025-10-31 09:00:00','2025-11-01 10:00:00'),
+(8,6,15,'Data Science','Regression basics','2025-11-01 11:00:00','2025-11-02 11:00:00'),
+(9,8,8,'ML Models','Linear regression','2025-11-02 12:00:00','2025-11-03 13:00:00'),
+(10,10,9,'Discrete Math','Logic gates','2025-11-03 14:00:00','2025-11-04 15:00:00');
+
+-- add calendar event
+insert into calendar_event (event_id, user_id, event_name, start_date, end_date, description) 
+values
+(1,1,'Study Database','2025-11-06 10:00:00','2025-11-06 12:00:00','ER diagram review'),
+(2,1,'Quiz Prep','2025-11-07 14:00:00','2025-11-07 15:00:00','Review SQL questions'),
+(3,2,'Assignment Work','2025-11-06 13:00:00','2025-11-06 15:00:00','OS assignment'),
+(4,2,'Lecture Review','2025-11-07 16:00:00','2025-11-07 17:00:00','Review notes'),
+(5,3,'Coding Practice','2025-11-05 11:00:00','2025-11-05 13:00:00','Web app practice'),
+(6,3,'Team Meeting','2025-11-08 18:00:00','2025-11-08 19:00:00','Discuss project'),
+(7,4,'AI Reading','2025-11-09 09:00:00','2025-11-09 11:00:00','Read AI papers'),
+(8,4,'Essay Writing','2025-11-10 14:00:00','2025-11-10 15:30:00','Ethics essay draft'),
+(9,5,'Review Session','2025-11-06 12:00:00','2025-11-06 14:00:00','Network review'),
+(10,5,'Test Prep','2025-11-07 10:00:00','2025-11-07 11:30:00','Firewall notes'),
+(11,6,'Study Time','2025-11-08 13:00:00','2025-11-08 14:30:00','Security quiz'),
+(12,6,'Read Paper','2025-11-09 09:00:00','2025-11-09 10:00:00','Cloud system research'),
+(13,7,'Practice Quiz','2025-11-09 10:00:00','2025-11-09 11:00:00','Self test'),
+(14,7,'Note Review','2025-11-10 12:00:00','2025-11-10 13:00:00','Review notes'),
+(15,8,'Work Session','2025-11-11 10:00:00','2025-11-11 12:00:00','ML practice'),
+(16,8,'Cleanup Notes','2025-11-12 09:00:00','2025-11-12 10:00:00','Organize notes'),
+(17,9,'Plan Review','2025-11-12 10:00:00','2025-11-12 11:00:00','Planning task'),
+(18,9,'Study Night','2025-11-13 19:00:00','2025-11-13 21:00:00','Long study'),
+(19,10,'Data Review','2025-11-14 09:00:00','2025-11-14 10:00:00','Data science review'),
+(20,10,'Summary Update','2025-11-14 11:00:00','2025-11-14 12:00:00','Summaries update');
+
+-- add ai query
+insert into ai_query (query_id, user_id, context, response, date)
+values
+(1,1,'Summarize DB normalization','Normalization reduces redundancy','2025-10-10 09:00:00'),
+(2,1,'Explain primary key','Unique identifier','2025-10-12 10:00:00'),
+(3,2,'Explain process scheduling','CPU scheduling overview','2025-10-14 11:00:00'),
+(4,3,'Generate quiz on AI','AI quiz created','2025-10-15 13:00:00'),
+(5,3,'Explain neural networks','Neural nets process layers','2025-10-17 14:00:00'),
+(6,4,'Summarize security threats','Malware, phishing, DoS','2025-10-18 16:00:00'),
+(7,5,'Generate study plan','Study plan created','2025-10-20 10:00:00'),
+(8,7,'Summarize ML concepts','Supervised vs unsupervised','2025-10-21 12:00:00'),
+(9,9,'Explain recursion','Function calling itself','2025-10-22 13:00:00'),
+(10,10,'Suggest study schedule','2-hour daily plan','2025-10-24 15:00:00');
+
+-- add stat
+insert into performance_stat (stat_id, user_id, metric_type, value, record_time)
+values
+(1,1,'StudyHours',5,'2025-11-05 20:00:00'),
+(2,2,'StudyHours',3,'2025-11-05 19:30:00'),
+(3,3,'StudyHours',4,'2025-11-05 21:00:00'),
+(4,4,'StudyHours',6,'2025-11-06 19:00:00'),
+(5,5,'StudyHours',2,'2025-11-06 20:00:00'),
+(6,6,'StudyHours',5,'2025-11-07 18:00:00'),
+(7,7,'StudyHours',4,'2025-11-07 21:00:00'),
+(8,8,'StudyHours',3,'2025-11-08 22:00:00'),
+(9,9,'StudyHours',6,'2025-11-08 19:30:00'),
+(10,10,'StudyHours',5,'2025-11-09 20:00:00');
+
