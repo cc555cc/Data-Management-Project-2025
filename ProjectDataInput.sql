@@ -122,6 +122,7 @@ values
 (12004, 9003, 'assignment'),
 (12005, 9004, 'study');
 
+
 -- additional entries for view testing
 insert into course_work (cw_id, user_id, course_id, cw_title, cw_type, description, due_date, grade) 
 values

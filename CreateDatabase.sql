@@ -83,7 +83,7 @@ DROP TABLE IF EXISTS `datamanagementproject`.`course` ;
 
 CREATE TABLE IF NOT EXISTS `datamanagementproject`.`course` (
   `course_id` INT NOT NULL,
-  `course_name` VARCHAR(45) NULL DEFAULT NULL,
+  `course_name` VARCHAR(45) NULL,
   PRIMARY KEY (`course_id`),
   UNIQUE INDEX `course_id_UNIQUE` (`course_id` ASC) VISIBLE)
 ENGINE = InnoDB
@@ -98,6 +98,7 @@ DROP TABLE IF EXISTS `datamanagementproject`.`course_resource` ;
 CREATE TABLE IF NOT EXISTS `datamanagementproject`.`course_resource` (
   `resource_id` INT NOT NULL,
   `course_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
   `resource_name` VARCHAR(80) NULL DEFAULT NULL,
   `file_url` VARCHAR(200) NULL DEFAULT NULL,
   `file_type` VARCHAR(45) NULL DEFAULT NULL,
@@ -105,9 +106,15 @@ CREATE TABLE IF NOT EXISTS `datamanagementproject`.`course_resource` (
   PRIMARY KEY (`resource_id`),
   UNIQUE INDEX `resource_id_UNIQUE` (`resource_id` ASC) VISIBLE,
   INDEX `course_id_idx` (`course_id` ASC) VISIBLE,
+  INDEX `course_resource_user_id_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `course_resource_id`
     FOREIGN KEY (`course_id`)
-    REFERENCES `datamanagementproject`.`course` (`course_id`))
+    REFERENCES `datamanagementproject`.`course` (`course_id`),
+  CONSTRAINT `course_resource_user_id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `datamanagementproject`.`user` (`user_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 

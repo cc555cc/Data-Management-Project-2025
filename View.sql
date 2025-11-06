@@ -2,7 +2,7 @@ use datamanagementproject;
 
 -- View 8:
 create view user_accumulated_study_time as
-select u.user_id, u.name , sum(timestampdiff(minute, ss.start_time, ss.end_time))/60 as time_accumulated_in_hour
+select u.user_id, u.name , sum(timestampdiff(minute, ss.start_time, ss.end_time))/60 as time_accumulated_in_hour -- get the time different of each section, then add them up
 from User u 
 join study_section ss on u.user_id = ss.user_id
 group by u.user_id, u.name;
@@ -25,13 +25,5 @@ where u.user_id = 1001
 group by c.course_name;
 
 
-
-insert into event_tag (tag_id, event_id, tag_name)
-values
-(12006,9006,'assignment'),
-(12007,9007,'project');
-
-select * from user_1001_assignment_or_quiz_tag;
- drop view if exists assignment_or_quiz_tag;
 
     
